@@ -1,0 +1,60 @@
+﻿@using OurLauncherWeb.Models
+@using System.IO
+@model KeyValuePair<string, string>
+
+@{
+    string path = Model.Value.Replace(@"\",@"\\");
+}
+
+<picture>
+    <source media="(min-width:650px)" srcset="img_pink_flowers.jpg">
+    <source media="(min-width:465px)" srcset="img_white_flower.jpg">
+    <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
+</picture>
+
+
+<script>
+    $.ajax({
+        method: "POST",
+        url: "/Home/GetThumbnail",
+        dataType: "json",
+        data: { path: "@path", name: "@Model.Key" }
+    }).done(function (thumbnail) {
+        console.log("successfully loaded...");
+        var pictureWrapperElement = $("#pictureWrapper_@Model.Key");
+        var pictureElement = pictureWrapperElement.find('img').eq(0);
+        var spinner = pictureWrapperElement.find('span');
+        pictureElement.attr("src", thumbnail);
+        spinner.hide();
+        pictureElement.show();
+        var thumbNailCache = thumbnail;
+
+        pictureElement.dblclick(function () {
+            var element = $(this);
+            if (element.width() > 64) {
+                element.attr("src", thumbNailCache);
+                element.addClass("img-thumbnail");
+                element.css("width", "64px");
+                element.css("height", "64px");
+            } else {
+                $.ajax({
+                    method: "POST",
+                    url: "/Home/GetOriginal",
+                    dataType: "json",
+                    data: { path: "@path", name: "@Model.Key" }
+                }).done(function (original) {
+                    console.log("successfully loaded...");
+                    element.attr("src", original);
+                    element.removeClass("img-thumbnail");
+                    element.css("width", "auto");
+                    element.css("height", "auto");
+                }).fail(function () {
+                    console.log("Error occured...");
+                });
+            }
+        });
+
+    }).fail(function () {
+        console.log("Error occured...");
+    });
+</script>

@@ -1,0 +1,82 @@
+html {
+    background: transparent !important;
+}
+body {
+    background: transparent !important;
+    color: #b6ff00;
+    -webkit-app-region: drag;
+    overflow: hidden;
+}
+/*disable borders for focus*/
+/*div:focus{
+    border: none !important;
+}*/
+button {
+    -webkit-app-region: no-drag;
+}
+.dark_transparent_bg {
+    background-color: rgba(0,0,0,0.5) !important;
+    color: white !important;
+}
+.rounded {
+    border: solid 0px black;
+    border-radius: 5px;
+}
+.launch-link {
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+.img-thumbnail {
+    width: 64px;
+    height: 64px;
+}
+
+.modal-header {
+    position: absolute;
+    border: none;
+    z-index: 50;
+    right: 10px;
+    top: 10px;
+    padding: 0px;
+}
+.modal-body {
+    padding: 0px !important;
+}
+#dynamic-content {
+    height: 100%;
+    background-repeat: no-repeat !important;
+}
+.modal-close {
+    z-index: 50;
+    color: white;
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid 0px #FFF;
+    mix-blend-mode: difference;
+    font-weight: bold;
+    position: absolute;
+}
+.modal-dialog {
+    position: absolute;
+}
+
+.titlebar {
+    -webkit-app-region: drag;
+}
+#pictureModal {
+    padding: 0px !important;
+}
+
+#albumDialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    top: 10%;
+    background-color: black;
+    opacity: 0.95;
+    color: white;
+}

@@ -1,0 +1,13 @@
+﻿@using OurLauncherWeb.Models
+@using System.IO
+
+@model KeyValuePair<string, string>
+
+@{
+    string base64Image = Model.Value.Replace(@"\","|||");
+}
+
+<div class="p-2 flex-fill" id="pictureWrapper_@Model.Key">
+    <span class="spinner-border"></span>
+    <img src="@base64Image" class="img-thumbnail" />
+</div>

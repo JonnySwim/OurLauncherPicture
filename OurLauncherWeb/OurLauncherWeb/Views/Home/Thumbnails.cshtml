@@ -1,0 +1,10 @@
+﻿@using OurLauncherWeb.Models
+@if (ViewBag.Files != null) {
+    @foreach (Picture picture in ViewBag.Files) {
+        @await Html.PartialAsync("Thumbnail", picture);
+    }
+}
+
+<script defer>
+        window.CURRENTFOLDER = '@ViewBag.Folder.Replace(@"\", "|||")';
+</script>

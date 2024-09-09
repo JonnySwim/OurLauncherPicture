@@ -1,0 +1,34 @@
+﻿<div class="d-flex flex-wrap" style="-webkit-app-region: no-drag; overflow: auto;" id="thumbnails">
+    @await Html.PartialAsync("Thumbnails")
+</div>
+
+<form name="folderForm" id="folderForm" style="display: none" method="post">
+    <input type="text" value="" name="path" id="currentFolderPath" onchange="$('#submit').trigger('click')" webkitdirectory />
+    <button type="submit" name="submit" id="submit"></button>
+</form>
+
+<div id="pictureModal" class="modal">
+    <div class="modal-header"> 
+    </div>
+    <div class="modal-body text-center" id="dynamic-content">
+        <button type="button" class="modal-close" data-bs-dismiss="modal" onclick="window.CURRENTPICTURE = null">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-dialog" role="document"></div>
+</div>
+
+<dialog id="albumDialog">
+    please enter a album-name -and path:
+    <br />
+    <input type="text" name="albumName" id="albumName" value="" />
+    <br />
+    <button onclick="PictureHelper.CreateAlbum($('#albumName').val()); document.querySelector('#albumDialog').close();">choose directory</button>
+    <button onclick="document.querySelector('#albumDialog').close()">close</button>
+</dialog>
+
+<input id="file-input" type="file" name="name" style="display: none;" webkitdirectory />
+
+<script>
+    PictureViewer.LoadViewer();
+</script>

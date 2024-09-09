@@ -1,0 +1,7 @@
+
+OurLauncher/OurLauncher/obj/*
+OurLauncher/OurLauncher/bin/*
+OurLauncherWeb/OurLauncherWeb/obj/*
+OurLauncherWeb/OurLauncherWeb/bin/*
+OurLauncher/.vs/*
+OurLauncherWeb/.vs/*

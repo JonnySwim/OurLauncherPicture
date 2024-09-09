@@ -1,0 +1,18 @@
+﻿@using OurLauncherWeb.Models
+@model Picture
+
+@{
+    string path = Model.Path.Replace(@"\", "|||");
+    //string path = @"" + Model.Value;
+}
+
+<div class="p-2 flex-column" id="pictureWrapper_@Model.ID">
+    <span class="spinner-border"></span>
+    <img src="" loading="lazy" class="img-thumbnail" style="display: none;" id="img_@Model.ID"/>
+</div>
+
+<script defer>
+    $(function () {
+        PictureHelper.Load('@path', '@Model.ID');
+    });
+</script>
